@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <div class="mermaid">
+        graph TD
+            %% Order Placement
+            A[Product Catalog] --> B[Buyer Order Submission]
+            B --> C{Inventory Check}
+            C -->|In Stock| D[Order Validation]
+            C -->|Out of Stock| E[Supplier Notification]
+            E --> F[Inventory Replenishment]
+            F --> C
+
+            %% Order Processing
+            D --> G[Order Confirmation]
+            G --> H[Pick List Generation]
+            H --> I[Packaging Instructions]
+            I --> J[Invoice Generation]
+
+            %% Shipment Planning
+            J --> K{Transport Mode}
+            K -->|Land| L[Route Optimization]
+            K -->|Air| M[Express Routing]
+            K -->|Sea| N[Container Planning]
+            L & M & N --> O[Carrier Assignment]
+            O --> P[Pickup Scheduling]
+
+            %% Warehousing & Fulfillment
+            P --> Q[Goods Picking]
+            Q --> R[Packing]
+            R --> S{Quality Check}
+            S -->|Pass| T[Inventory Update]
+            S -->|Fail| U[Replacement Process]
+            U --> Q
+
+            %% Shipping & Dispatch
+            T --> V[Carrier Pickup]
+            V --> W[Tracking ID Generation]
+            W --> X[Real-time Tracking]
+            X --> Y{Cross-border?}
+            Y -->|Yes| Z[Customs Clearance]
+            Y -->|No| AA[Local Transit]
+
+            %% Delivery
+            Z & AA --> AB[Last Mile Delivery]
+            AB --> AC[Proof of Delivery]
+            AC --> AD{Return Requested?}
+            AD -->|Yes| AE[Return Initiation]
+            AD -->|No| AF[Payment Processing]
+
+            %% Post-Delivery
+            AE --> AG[Return Processing]
+            AF --> AH[Payment Settlement]
+            AG & AH --> AI[Feedback Collection]
+            AI --> AJ[Performance Analytics]
+
+            %% Styling
+            classDef process fill:#e6f7ff,stroke:#1890ff,stroke-width:2px;
+            classDef decision fill:#f6ffed,stroke:#52c41a,stroke-width:2px;
+            classDef support fill:#fff2e8,stroke:#fa8c16,stroke-width:2px;
+            classDef end fill:#f9f0ff,stroke:#722ed1,stroke-width:2px;
+            
+            class A,B,D,G,H,I,J,Q,R,T,V,W,X,AB,AC,AH,AI,AJ process;
+            class C,S,Y,AD decision;
+            class AK,AM,AO,AQ,AS,AU support;
+            class AF,AG,AH end;
+            
+            linkStyle 6,7,8 stroke:#ff4d4f,stroke-width:2px;
+            linkStyle 16 stroke:#faad14,stroke-width:2px;
+    </div>
+</body>
+</html>
