@@ -8,14 +8,18 @@
 </head>
 <body>
     <div class="mermaid">
-        graph TD
-            A[Product Catalog] --> B[Buyer Order Submission]
-            B --> C{Inventory Check}
-            C -->|In Stock| D[Order Validation]
-            C -->|Out of Stock| E[Supplier Notification]
-            E --> F[Inventory Replenishment]
-            F --> C
-            ...
+graph TD
+    A[Buyer Places Order] --> B[Order Management System]
+    B --> C{Inventory Check}
+    C -->|Available| D[Warehouse Processing]
+    C -->|Not Available| E[Supplier Alert]
+    D --> F[Carrier Allocation]
+    E --> F[Drop-ship Coordination]
+    F --> G[Transportation]
+    G --> H[Real-time Tracking]
+    H --> I[Delivery & POD]
+    I --> J[Invoice Settlement]
+    J --> K[Feedback & Analytics]
     </div>
 </body>
 </html>
